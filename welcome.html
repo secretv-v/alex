@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('alex.jpg');
+            background-size: 100% auto; /* Set the width to 50% of the viewport width and auto height */
+            background-position: center;
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        .bubble {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            max-width: 80%;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #username {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="bubble" onclick="changeBackground()">Hi! <span id="username"></span> I hope you have a nice day! ^^</div>
+
+    <script>
+        var firstImage = 'alex.jpg';
+        var secondImage = 'alex2.jpg';
+
+        function getUsername() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var username = urlParams.get('username');
+            document.getElementById("username").textContent = username;
+        }
+
+        function changeBackground() {
+            var currentBackground = document.body.style.backgroundImage;
+            if (currentBackground === 'url("' + firstImage + '")') {
+                document.body.style.backgroundImage = 'url("' + secondImage + '")';
+            } else {
+                document.body.style.backgroundImage = 'url("' + firstImage + '")';
+            }
+        }
+
+        window.onload = getUsername;
+    </script>
+</body>
+</html>
